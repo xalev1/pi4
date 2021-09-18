@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Smoke N' Smoke</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.CadastrarProduto.css">
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    </head>
+    <header>
+        <h1>Smoke N' Smoke</h1>
+    </header>    
+    <body>
+        <div class="container"> <div class=" text-center mt-5 ">
+                <h1> Cadastro de Produtos</h1>
+            </div>
+            <div class="row ">
+                <div class="col-lg-7 mx-auto">
+                    <div class="card mt-2 mx-auto p-4 bg-light">
+                        <div class="card-body bg-light">
+                            <div class="container">
+                                <form method= "post">
+                                    <div class="controls">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group"> <label>Nome do Produto *</label> <input id="nome" type="text" name="name" class="form-control" required="required" data-error="Name is required."> </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group"> <label>Código *</label> <input id="id_produto" type="number" name="codigo" class="form-control" required="required" data-error="Code is required."> </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group"> <label> Preço de Custo *</label> <input id="preco_custo" type="number" name="custo" class="form-control" required="required" data-error=" Valid number is required."> </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group"> <label> Preço de Venda *</label> <input id="preco_venda" type="number" name="venda" class="form-control" required="required" data-error="Valid number is required."> </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group"> <label>Descrição *</label> <textarea id="descricao" name="descricao" class="form-control" placeholder="Escreva a descrição do produto." rows="4" required="required" data-error="Please, leave us a message."></textarea> </div>
+                                            </div>
+                                            <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Salvar"> </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
