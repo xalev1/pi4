@@ -19,6 +19,7 @@ public class Produto implements Serializable {
     private float preco_custo;
     private float preco_venda;
     private boolean status;
+    private int quantidade;
 
     public long getId_produto() {
         return id_produto;
@@ -67,5 +68,14 @@ public class Produto implements Serializable {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+    
 
 }
