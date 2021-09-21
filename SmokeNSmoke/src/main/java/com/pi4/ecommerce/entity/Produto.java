@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 public class Produto implements Serializable {
 
@@ -14,12 +15,14 @@ public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id_produto;
+
     private String nome;
     private String descricao;
-    private float preco_custo;
-    private float preco_venda;
+    private double preco_custo;
+    private double preco_venda;
     private boolean status;
     private int quantidade;
+    private String imagem;
 
     public long getId_produto() {
         return id_produto;
@@ -45,19 +48,19 @@ public class Produto implements Serializable {
         this.descricao = descricao;
     }
 
-    public float getPreco_custo() {
+    public double getPreco_custo() {
         return preco_custo;
     }
 
-    public void setPreco_custo(float preco_custo) {
+    public void setPreco_custo(double preco_custo) {
         this.preco_custo = preco_custo;
     }
 
-    public float getPreco_venda() {
+    public double getPreco_venda() {
         return preco_venda;
     }
 
-    public void setPreco_venda(float preco_venda) {
+    public void setPreco_venda(double preco_venda) {
         this.preco_venda = preco_venda;
     }
 
@@ -76,6 +79,14 @@ public class Produto implements Serializable {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+   
 
 }
