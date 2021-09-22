@@ -4,6 +4,7 @@ import com.pi4.ecommerce.entity.Produto;
 import com.pi4.ecommerce.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,6 +34,15 @@ public class ProdutoController {
         mv.addObject("produtos", produtos);
         return mv;
 
+    }
+    
+    @RequestMapping("/detalheProduto/{id_produto}")
+    public ModelAndView detalheProduto(@PathVariable("id_produto") long id_produto){
+        Produto produto = pr.findById(id_produto);
+        ModelAndView mv = new ModelAndView("detalheProduto");
+        mv.addObject("produto", produto);
+        return mv;
+        
     }
 
 }

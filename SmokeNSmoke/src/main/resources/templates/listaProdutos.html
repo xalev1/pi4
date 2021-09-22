@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Smoke N' Smoke</title>
-        <link rel="stylesheet" type="text/css" href="style.ListaProdutos.css">
+        <link rel="stylesheet" type="text/css" href="/listaProdutos.css">
         <!--Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -59,7 +59,7 @@
                                 <td><span th:text ="${produto.preco_venda}"></span></td>
                                 <td><span th:text ="${produto.status}"></span></td>
                                 <td>
-                                    <a href="#" class="view" title="Visualizar" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                                    <a th:href="@{/detalheProduto/{id_produto}(id_produto = ${produto.id_produto})}" class="view" title="Visualizar" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
                                     <a href="/alteracaoProduto" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 </td>
                             </tr>        
