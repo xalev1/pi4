@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -50,17 +50,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>2</td>
-                                <td>Maria Anders</td>
-                                <td>Obere Str. 57</td>
-                                <td>Berlin</td>
-                                <td>12209</td>
-                                <td>Germany</td>
-                                <td>Teste</td>
+                            <tr th:each="produto : ${produtos}">
+                                <td><span th:text ="${produto.id_produto}"></span></td>
+                                <td><span th:text ="${produto.nome}"></span></td>
+                                <td><span th:text ="${produto.descricao}"></span></td>
+                                <td><span th:text ="${produto.quantidade}"></span></td>
+                                <td><span th:text ="${produto.preco_custo}"></span></td>
+                                <td><span th:text ="${produto.preco_venda}"></span></td>
+                                <td><span th:text ="${produto.status}"></span></td>
                                 <td>
                                     <a href="#" class="view" title="Visualizar" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                                    <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="/alteracaoProduto" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 </td>
                             </tr>        
                         </tbody>
