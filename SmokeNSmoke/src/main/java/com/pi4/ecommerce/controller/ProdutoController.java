@@ -2,12 +2,15 @@ package com.pi4.ecommerce.controller;
 
 import com.pi4.ecommerce.entity.Produto;
 import com.pi4.ecommerce.repository.ProdutoRepository;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ProdutoController {
@@ -43,6 +46,19 @@ public class ProdutoController {
         mv.addObject("produto", produto);
         return mv;
         
+    }
+    @RequestMapping(value = "/alterarProduto/{id_produto}")
+    public ModelAndView editarProduto(@PathVariable("id_produto")long id_produto) {
+        Produto produto = pr.findById(id_produto);
+        ModelAndView mv = new ModelAndView("alterarProduto");
+        mv.addObject("produto", produto);
+        return mv;
+    }
+    
+    @RequestMapping(value = "/alterarProduto/{id_produto}", method = RequestMethod.POST)
+    public String updateProduto(@Valid Produto produto, BindingResult result, RedirectAttributes attributes) {
+        pr.save(produto);
+        return "redirect:/listaPodutos";
     }
 
 }

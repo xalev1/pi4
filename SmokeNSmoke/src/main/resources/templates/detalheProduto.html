@@ -9,7 +9,7 @@
         <h1>Smoke N' Smoke</h1>
     </header>
     <body>
-        <div th:each="produto : ${produto}" class="container detalhesEvento">
+        <div th:each="produto : ${produto}" class="container detalheProduto">
 	<h5>Detalhes do Produto</h5>
 		<div class="row">
 			<p>Nome: <span th:text="${produto.nome}"></span></p>
