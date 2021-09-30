@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Smoke N' Smoke</title>
+    </head>
+    <header>
+        <h1>Smoke N' Smoke</h1>
+    </header>
+    <body>
+        <div th:each="produto : ${produto}" class="container detalheProduto">
+	<h5>Detalhes do Produto</h5>
+		<div class="row">
+			<p>Nome: <span th:text="${produto.nome}"></span></p>
+			<p>Descrição: <span th:text="${produto.descricao}"></span></p>
+			<p>Preço: <span th:text="${produto.preco_venda}"></span></p>
+		</div>
+	</div>
+    </body>
+</html>    

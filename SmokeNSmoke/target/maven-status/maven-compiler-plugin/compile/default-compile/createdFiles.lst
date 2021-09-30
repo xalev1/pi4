@@ -1,0 +1,8 @@
+com\pi4\ecommerce\repository\ProdutoRepository.class
+com\pi4\ecommerce\entity\Produto.class
+com\pi4\ecommerce\controller\IndexController.class
+com\pi4\ecommerce\controller\ProdutoController.class
+com\pi4\ecommerce\util\ConnectionDatabase.class
+com\pi4\ecommerce\SmokeNSmokeApplication.class
+com\pi4\ecommerce\entity\ProdutoImagem.class
+com\pi4\ecommerce\DataConfiguration.class
