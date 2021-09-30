@@ -1,0 +1,74 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Smoke N' Smoke</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/alteracaoProduto.css">
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    </head>
+    <header>
+        <h1>Smoke N' Smoke</h1>
+    </header>    
+    <body>
+        <div class="container"> <div class=" text-center mt-5 ">
+                <h1> Alteração de Produtos</h1>
+            </div>
+            <div class="row ">
+                <div class="col-lg-7 mx-auto">
+                    <div class="card mt-2 mx-auto p-4 bg-light">
+                        <div class="card-body bg-light">
+                            <div class="container">
+                                <form th:each="produto : ${produto}">
+                                    <div class="controls">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group"> <label>* Nome do Produto</label> <input id="nome" type="text" name="nome" class="form-control"  th:attr="value = ${produto.nome}" required="required" data-error="Name is required."> </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group"> <label>* Quantidade</label> <input id="quantidade" type="number" name="quantidade" class="form-control" th:attr="value = ${produto.quantidade}" required="required" data-error=" Valid number is required."> </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group"> <label>* Preço de Custo</label> <input id="preco_custo" type="number" step= "0.01" name="preco_custo" class="form-control" th:attr="value = ${produto.preco_custo}" required="required" data-error=" Valid number is required."> </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group"> <label>* Preço de Venda</label> <input id="preco_venda" type="number" step= "0.01" name="preco_venda" class="form-control" th:attr="value = ${produto.preco_venda}" required="required" data-error="Valid number is required."> </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div><label>* Status</label> <select id="status" name="status" class="form-control" th:attr="value = ${produto.status}" required="required">
+                                                        <option value = "ativo"> Ativo</option>
+                                                        <option value = "inativo"> Inativo</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>* Imagem: </label>
+                                                <div class="inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="glyphicon glyphicon-sort-by-attributes"></i></span>
+                                                        <input type="file" name="file"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group"> <label>* Descrição</label> <textarea id="descricao" name="descricao" class="form-control" rows="4" required="required" data-error="Please, leave us a message."></textarea> </div>
+                                            </div>
+                                            <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Salvar"> </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
