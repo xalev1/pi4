@@ -1,27 +1,44 @@
 package com.pi4.ecommerce.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name = "tb_produto")
 public class Produto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "prd_id")
     private long id_produto;
 
+    @Column(name = "prd_nome", length =200)
     private String nome;
+    
+    @Column(name = "prd_descricao", length =200)
     private String descricao;
+    
+    @Column(name = "prd_custo")
     private double preco_custo;
+    
+    @Column(name = "prd_venda")
     private double preco_venda;
+    
+    @Column(name = "prd_status")
     private boolean status;
+    
+    @Column(name = "prd_quantidade")
     private int quantidade;
+    
+    @Column(name = "prd_imagem", length =200)
     private String imagem;
 
     public long getId_produto() {
