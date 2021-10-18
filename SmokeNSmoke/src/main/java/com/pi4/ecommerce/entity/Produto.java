@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "tb_produto")
 public class Produto implements Serializable {
@@ -20,26 +19,24 @@ public class Produto implements Serializable {
     @Column(name = "prd_id")
     private long id_produto;
 
-    @Column(name = "prd_nome", length =200)
+    @Column(name = "prd_nome", length = 200)
     private String nome;
-    
-    @Column(name = "prd_descricao", length =200)
+
+    @Column(name = "prd_descricao", length = 200)
     private String descricao;
-    
+
     @Column(name = "prd_custo")
     private double preco_custo;
-    
+
     @Column(name = "prd_venda")
     private double preco_venda;
-    
+
     @Column(name = "prd_status")
-    private boolean status;
-    
+    private boolean active=true;
+
     @Column(name = "prd_quantidade")
     private int quantidade;
-    
-    @Column(name = "prd_imagem", length =200)
-    private String imagem;
+
 
     public long getId_produto() {
         return id_produto;
@@ -81,14 +78,6 @@ public class Produto implements Serializable {
         this.preco_venda = preco_venda;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public int getQuantidade() {
         return quantidade;
     }
@@ -97,13 +86,12 @@ public class Produto implements Serializable {
         this.quantidade = quantidade;
     }
 
-    public String getImagem() {
-        return imagem;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
+    public void setActive(boolean active) {
+        this.active = active;
     }
-   
 
 }

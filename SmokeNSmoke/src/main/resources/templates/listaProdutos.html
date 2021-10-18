@@ -50,17 +50,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="produto : ${produtos}">
+                            <tr th:each="produto : ${listarProdutos}">
                                 <td><span th:text ="${produto.id_produto}"></span></td>
                                 <td><span th:text ="${produto.nome}"></span></td>
                                 <td><span th:text ="${produto.descricao}"></span></td>
                                 <td><span th:text ="${produto.quantidade}"></span></td>
                                 <td><span th:text ="${produto.preco_custo}"></span></td>
                                 <td><span th:text ="${produto.preco_venda}"></span></td>
-                                <td><span th:text ="${produto.status}"></span></td>
+                                <td><span th:text ="${produto.active}"></span></td>
                                 <td>
-                                    <a th:href="@{/detalheProduto/{id_produto}(id_produto = ${produto.id_produto})}" class="view" title="Visualizar" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                                    <a th:href="@{/alterarProduto/{id_produto}(id_produto = ${produto.id_produto})}" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                    <a th:href="@{/detalheProduto/{id_produto}(id_produto=${produto.id_produto})}" class="view" title="Visualizar" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                                    <a th:href="@{/alterarProduto/{id_produto}(id_produto=${produto.id_produto})}" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 </td>
                             </tr>        
                         </tbody>

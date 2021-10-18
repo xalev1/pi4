@@ -1,64 +1,52 @@
 package com.pi4.ecommerce.controller;
 
 import com.pi4.ecommerce.entity.Produto;
-import com.pi4.ecommerce.repository.ProdutoRepository;
-import javax.validation.Valid;
+import com.pi4.ecommerce.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ProdutoController {
 
     @Autowired
-    private ProdutoRepository pr;
-
-    @RequestMapping(value = "/cadastrarProduto", method = RequestMethod.GET)
-    public String form() {
+    private ProdutoService service;
+    
+    // Listar todos os produtos
+    @GetMapping("/produtos")
+    public String listarProdutos(Model model){
+        model.addAttribute("listarProdutos", service.getAllProducts());
+        return "listaProdutos";
+    }
+    // Mostrar formulário de cadastro
+    @GetMapping("/cadastrarProduto")
+    public String cadastrarProdutoForm(Model model){
+        Produto produto = new Produto();
+        model.addAttribute("produto", produto);
         return "cadastroProduto";
     }
-
-    @RequestMapping(value = "/cadastrarProduto", method = RequestMethod.POST)
-    public String form(Produto produto) {
-
-        pr.save(produto);
-        return "redirect:/cadastrarProduto";
+    // Salvar produto
+    @PostMapping("/cadastrarProduto") 
+    public String cadastrarProduto(@ModelAttribute("produto") Produto produto){
+        service.saveProduct(produto);
+        return "redirect:/produtos";
     }
-
-    @RequestMapping("/produtos")
-    public ModelAndView listaProdutos() {
-        ModelAndView mv = new ModelAndView("listaProdutos");
-        Iterable<Produto> produtos = pr.findAll();
-        mv.addObject("produtos", produtos);
-        return mv;
-
+    // Pegar dados do produto e mostrar no formulário de alterar produto
+    @GetMapping("/alterarProduto/{id_produto}")
+    public String alterarProdutoForm(@PathVariable (value="id_produto") long id_produto, Model model){
+        Produto produto = service.getProductById(id_produto);
+        model.addAttribute("produto", produto);
+        return "alterarProduto"; 
     }
-    
-    @RequestMapping("/detalheProduto/{id_produto}")
-    public ModelAndView detalheProduto(@PathVariable("id_produto") long id_produto){
-        Produto produto = pr.findById(id_produto);
-        ModelAndView mv = new ModelAndView("detalheProduto");
-        mv.addObject("produto", produto);
-        return mv;
-        
+    // Mostrar detalhes do Produto
+    @GetMapping("/detalheProduto/{id_produto}")
+    public String detalheProduto (@PathVariable (value="id_produto") long id_produto, Model model){
+        Produto produto = service.getProductById(id_produto);
+        model.addAttribute("produto", produto);
+        return "detalheProduto";
     }
-    @RequestMapping(value = "/alterarProduto/{id_produto}")
-    public ModelAndView editarProduto(@PathVariable("id_produto")long id_produto) {
-        Produto produto = pr.findById(id_produto);
-        ModelAndView mv = new ModelAndView("alterarProduto");
-        mv.addObject("produto", produto);
-        return mv;
-    }
-    
-    @RequestMapping(value = "/alterarProduto/{id_produto}", method = RequestMethod.POST)
-    public String updateProduto(@Valid Produto produto, BindingResult result, RedirectAttributes attributes) {
-        pr.save(produto);
-        return "redirect:/listaPodutos";
-    }
-
 }
