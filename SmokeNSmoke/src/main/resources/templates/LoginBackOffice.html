@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="/LoginBackOffice.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        
+    </head>
+    <body background="/imgFundo.jpg">
+        
+        <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <form class="box" method="post" action="/login" th:object="${usuario}" >
+                        
+                    <div class="alert alert-danger" role="alert" th:if="${msg}">
+                    <strong th:text="${msg}"></strong>
+                    </div>
+                    
+                    <h1>Smoke N' Smoke</h1>
+                    <p class="text-muted">Painel administrativo</p> 
+                    <p class="text-muted"> Por favor, digite seu login e senha</p> 
+                    <input type="text" th:field="*{fun_email}" id="fun_email"  name="fun_email" placeholder="E-Mail"> 
+                    <input type="password" th:field="*{fun_senhausu}" id="fun_senhausu" name="fun_senhausu" placeholder="Senha"> 
+                    <a class="forgot text-muted" for="lembrar" href="#">Esqueceu a senha?</a> 
+                    <input type="submit" >
+                    <div class="col-md-12">
+                        <ul class="social-network social-circle">
+                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
