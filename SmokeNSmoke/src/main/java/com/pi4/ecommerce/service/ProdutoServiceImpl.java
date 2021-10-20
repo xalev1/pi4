@@ -11,22 +11,23 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProdutoServiceImpl implements ProdutoService{
+public class ProdutoServiceImpl {
+    //implements ProdutoService
 
     @Autowired
     private ProdutoRepository repository;
     
-    @Override
+    //@Override
     public List<Produto> getAllProducts() {
        return repository.findAll();   
     }
 
-    @Override
+    //@Override
     public void saveProduct(Produto produto) {
         this.repository.save(produto);
     }
 
-    @Override
+    //@Override
     public Produto getProductById(long id_produto) {
         Optional<Produto> optional = repository.findById(id_produto);
         Produto produto = null;
@@ -38,9 +39,17 @@ public class ProdutoServiceImpl implements ProdutoService{
         return produto;     
     } 
 
-    @Override
+    //@Override
     public Page<Produto> findPaginated(int pageNo, int pageSize) {
        Pageable pageable = PageRequest.of(pageNo -1, pageSize);
        return this.repository.findAll(pageable);
     }
+    
+    public List<Produto> listAll(String keyword){
+         if (keyword != null) {
+            return repository.search(keyword);
+        }
+        return repository.findAll();
+    }
+    
 }

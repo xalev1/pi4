@@ -1,10 +1,11 @@
 package com.pi4.ecommerce.controller;
 
 import com.pi4.ecommerce.entity.Produto;
-import com.pi4.ecommerce.service.ProdutoService;
+import com.pi4.ecommerce.service.ProdutoServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ProdutoController {
 
     @Autowired
-    private ProdutoService service;
+    private ProdutoServiceImpl service;
     
     // Listar todos os produtos
     @GetMapping("/produtos")
-    public String listarProdutos(Model model){
+    public String listarProdutos(Model model, @Param("keyword") String keyword){
+        List<Produto> listarProdutos = service.listAll(keyword);
+        model.addAttribute("listarProductos", listarProdutos);
+        model.addAttribute("keyword", keyword);
+        
         return findPaginated(1, model);
     }
     // Mostrar formulário de cadastro

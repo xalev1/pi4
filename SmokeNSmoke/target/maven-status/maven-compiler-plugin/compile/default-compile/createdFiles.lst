@@ -13,4 +13,3 @@ com\pi4\ecommerce\service\ServiceBackOffice.class
 com\pi4\ecommerce\controller\ProdutoController.class
 com\pi4\ecommerce\util\ConnectionDatabase.class
 com\pi4\ecommerce\DataConfiguration.class
-com\pi4\ecommerce\service\ProdutoService.class
