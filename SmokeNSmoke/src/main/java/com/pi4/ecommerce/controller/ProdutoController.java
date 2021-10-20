@@ -2,7 +2,9 @@ package com.pi4.ecommerce.controller;
 
 import com.pi4.ecommerce.entity.Produto;
 import com.pi4.ecommerce.service.ProdutoService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +21,7 @@ public class ProdutoController {
     // Listar todos os produtos
     @GetMapping("/produtos")
     public String listarProdutos(Model model){
-        model.addAttribute("listarProdutos", service.getAllProducts());
-        return "listaProdutos";
+        return findPaginated(1, model);
     }
     // Mostrar formulário de cadastro
     @GetMapping("/cadastrarProduto")
@@ -48,5 +49,17 @@ public class ProdutoController {
         Produto produto = service.getProductById(id_produto);
         model.addAttribute("produto", produto);
         return "detalheProduto";
+    }
+    
+    @GetMapping("/page/{pageNo}")
+    public String findPaginated(@PathVariable (value="pageNo") int pageNo, Model model){
+        int pageSize = 10;
+        Page<Produto> page = service.findPaginated(pageNo, pageSize);
+        List<Produto> listarProdutos = page.getContent();
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("listarProdutos", listarProdutos);
+        return "listaProdutos";
     }
 }

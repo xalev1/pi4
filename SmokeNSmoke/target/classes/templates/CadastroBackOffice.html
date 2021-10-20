@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Cadastro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="/CadastroBackOffice.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        
+    </head>
+    <body background="/imgFundo.jpg">
+        
+        
+        
+        <div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="card">
+                <form class="box" method="post">
+                    <h1>Cadastrar um Funcionário</h1>
+                    <input type="text" id="fun_nome"  name="fun_nome" required="required" placeholder="Nome *"> 
+                    <input type="text" id="fun_endereco" name="fun_endereco" required="required" placeholder="Endereço *"> 
+                    <input type="text" id="fun_bairro"  name="fun_bairro" required="required" placeholder="Bairro *"> 
+                    <input type="text" id="fun_cep"  name="fun_cep" required="required" placeholder="CEP *"> 
+                    <input type="text" id="fun_sexo"  name="fun_sexo" required="required" placeholder="Sexo *"> 
+                    <input type="text" id="fun_dtnasc"   name="fun_dtnasc" required="required"placeholder="Data Nascimento *"> 
+                    <input type="text" id="fun_numcpf"  name="fun_numcpf" required="required" placeholder="CPF *"> 
+                    <input type="text" id="fun_numfone"  name="fun_numfone" required="required" placeholder="Telefone *">
+                    <input type="text" id="fun_numrg"  name="fun_numrg" required="required" placeholder="RG *"> 
+                    <input type="text" id="fun_cargo"  name="fun_cargo" required="required" placeholder="Cargo *"> 
+                    <input type="text" id="fun_horario"  name="fun_horario" required="required" placeholder="Horário *">
+		    <input type="password" id="fun_senhausu" name="fun_senhausu" required="required" placeholder="Senha *"> 
+                    <input type="text" id="fun_salario"  name="fun_salario" required="required" placeholder="Salário *"> 
+                    <input type="text" id="fun_flgativo" name="fun_flgativo" required="required" placeholder="ativo *">
+                    <input type="text" id="fun_email"  name="fun_email" required="required" placeholder="E-Mail *">
+                    <input type="submit" value="Salvar">
+                    <div class="col-md-6">
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+</html>

@@ -3,7 +3,7 @@
         <title>Smoke N' Smoke</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="/alteracaoProduto.css">
+        <link rel="stylesheet" type="text/css" href="/cadastrarProduto.css">
         <!--Bootstrap-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     </head>
@@ -11,7 +11,8 @@
         <h1>Smoke N' Smoke</h1>
     </header>    
     <body>
-        <div class="container"> <div class=" text-center mt-5 ">
+        <div class="container"> 
+            <div class=" text-center mt-5 ">
                 <h1> Alteração de Produtos</h1>
             </div>
             <div class="row ">
@@ -21,7 +22,7 @@
                             <div class="container">
                                 <form action="#" th:action="@{/cadastrarProduto}" th:object="${produto}" method="post">
                                     <div class="controls">
-                                        <!-- Add hidden form field to handle update -->
+                                         <!-- Add hidden form field to handle update -->
                                         <input type="hidden" th:field="*{id_produto}" />
                                         <div class="row">
                                             <div class="col-md-6">
