@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProdutoRepository extends JpaRepository <Produto , Long> {
     
-    @Query("SELECT p FROM Produto p WHERE p.nome LIKE %?1%")
+    @Query("select p from Produto p where p.nome LIKE %?1%")
     List<Produto> search(String keyword);
 
     
