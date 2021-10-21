@@ -59,6 +59,14 @@ public class ProdutoController {
         model.addAttribute("produto", produto);
         return "detalheProduto";
     }
+    
+    // Mostrar detalhes do Produto
+    @GetMapping("/produto/{id_produto}")
+    public String Produto(@PathVariable(value = "id_produto") long id_produto, Model model) {
+        Produto produto = service.getProductById(id_produto);
+        model.addAttribute("produto", produto);
+        return "produto";
+    }
 
     @GetMapping("/page/{pageNo}")
     public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {

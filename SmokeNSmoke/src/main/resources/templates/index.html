@@ -103,7 +103,7 @@
                                 <!--Card Body-->
                                 <div class="card-body card-body-cascade text-center">
                                     <!--Card Title-->
-                                    <h4 class="card-title"><strong><a href="#" th:text="${produto.nome}"></a></strong></h4>
+                                    <h4 class="card-title"><strong><a th:href="@{/produto/{id_produto}(id_produto=${produto.id_produto})}" th:text="${produto.nome}"></a></strong></h4>
                                     <!-- Card Description-->
                                     <p class="card-text" th:text="${produto.descricao}"></p>
                                     <p class="price" th:text="'R$ ' + ${produto.preco_venda}"></p>

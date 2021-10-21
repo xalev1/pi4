@@ -9,6 +9,7 @@
         <!--Font Awesome-->
         <script src="https://kit.fontawesome.com/f2150dbc67.js" crossorigin="anonymous"></script>
         <!--Style-->
+        <link rel="stylesheet" type="text/css" href="/produto.css">
         <link rel="stylesheet" type="text/css" href="/detalheProduto.css">
         <title>Smoke N' Smoke</title>
     </head>
@@ -52,15 +53,21 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
-                            <h2 class="name">
-                                <span th:text="${produto.nome}"></span>
+                            <h2 class="name" th:text="${produto.nome}">
+                                <i class="fa fa-star fa-2x text-primary"></i>
+                                <i class="fa fa-star fa-2x text-primary"></i>
+                                <i class="fa fa-star fa-2x text-primary"></i>
+                                <i class="fa fa-star fa-2x text-primary"></i>
+                                <i class="fa fa-star fa-2x text-muted"></i>
+                                <span class="fa fa-2x"></span>
+                                <a href="javascript:void(0);">10 avaliações de clientes</a>
                             </h2>
-                            <hr/>
-                            <h3 class="price-container">R$: <span th:text="${produto.preco_venda}"></span></h3>
+                            <hr />
+                            <h3 class="price-container" th:text="'R$ ' + ${produto.preco_venda}"></h3>
                             <div class="certified">
                                 <ul>
                                     <li>
-                                        <a href="javascript:void(0);">Frete gratuito para compras acima de R$99</a>
+                                        <a href="javascript:void(0);">Frete Gratuito<span>Para compras acima de R$99</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -74,7 +81,8 @@
                                 <div id="myTabContent" class="tab-content">
                                     <div class="tab-pane fade active in" id="more-information">
                                         <br />
-                                        <p><span th:text="${produto.descricao}"></span></p>
+                                        <strong>Descrição</strong>
+                                        <p th:text="${produto.descricao}"></p>
                                     </div>
                                     <div class="tab-pane fade" id="specifications">
                                         <br />
@@ -88,7 +96,7 @@
                                         </dl>
                                     </div>
                                     <div class="tab-pane fade" id="reviews">
-                                        <br/>
+                                        <br />
                                         <form method="post" class="well padding-bottom-10" onsubmit="return false;">
                                             <textarea rows="2" class="form-control" placeholder="Escreva uma avaliação"></textarea>
                                             <div class="margin-top-10">
@@ -103,23 +111,23 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
-                            <hr />
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6 col-lg-6">
-                                    <a href="javascript:void(0);" class="btn btn-success btn-lg">Adicionar ao carrinho</a>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6">
-                                    <div class="btn-group">
-                                        <button class="btn btn-white btn-default"><i class="fa fa-star"></i> Adicionar à Lista</button>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <a href="javascript:void(0);" class="btn btn-success btn-lg">Adicionar ao carrinho</a>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <div class="btn-group">
+                                            <button class="btn btn-white btn-default"><i class="fa fa-star"></i> Adicionar à Lista</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- end product -->
                 </div>
-            </div> 
-            <!-- end product -->
+                <!-- end product -->
         </main>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
