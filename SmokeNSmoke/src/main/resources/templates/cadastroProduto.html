@@ -1,10 +1,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Smoke N' Smoke</title>
+        <title>Cadastro de Produto - Smoke N' Smoke</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="/cadastrarProduto.css">
-        <!--Bootstrap-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     </head>
     <header>
@@ -22,6 +21,7 @@
                             <div class="container">
                                 <form action="#" th:action="@{/cadastrarProduto}" th:object="${produto}" method="post">
                                     <div class="controls">
+                                        
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group"> <label>* Nome do Produto</label> <input id="nome" type="text" th:field = "*{nome}" class="form-control" required="required" data-error="Name is required."> </div>
@@ -30,6 +30,7 @@
                                                 <div class="form-group"> <label>* Quantidade</label> <input id="quantidade" type="number" th:field = "*{quantidade}" class="form-control" required="required" data-error=" Valid number is required."> </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group"> <label>* Preço de Custo</label> <input id="preco_custo" type="number" step= "0.01" th:field = "*{preco_custo}" class="form-control" required="required" data-error=" Valid number is required."> </div>
@@ -40,7 +41,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" for="status">Status</label>
+                                                <label class="col-md-2 control-label">Status</label>
                                                 <div class="col-md-8">
                                                     <label><input value="true" type="radio" th:field = "*{active}"
                                                                   checked="checked" /> Ativo </label> <label><input
