@@ -9,6 +9,37 @@ header {
     font-family: 'Architects Daughter', cursive;
 }
 
+h1 {
+    margin-bottom: 40px;
+    font-family: 'Architects Daughter', cursive;
+}
+
+
+ul {
+  list-style-type: none;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
 body {
     color: #566787;
     background: #f5f5f5;

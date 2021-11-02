@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Poppins:wght@200&display=swap');
 
 header {
-  padding: 30px;
-  text-align: center;
-  background: black;
-  color: white;
-  font-size: 30px;
-  font-family: 'Architects Daughter', cursive;
+    padding: 15px;
+    text-align: center;
+    background: black;
+    color: white;
+    font-size: 30px;
+    font-family: 'Architects Daughter', cursive;
 }
 
 body {
@@ -117,4 +117,10 @@ table.table td i {
    text-decoration: none;
     color: white;
     background-color: transparent;
+}
+
+.logo{
+    width: 150px; 
+    height: 100px;  
+    text-indent: -9999px;
 }

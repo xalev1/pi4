@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Poppins:wght@200&display=swap');
 
 header {
-  padding: 15px;
-  text-align: center;
-  background: black;
-  color: white;
-  font-size: 30px;
-  font-family: 'Architects Daughter', cursive;
+    padding: 15px;
+    text-align: center;
+    background: black;
+    color: white;
+    font-size: 30px;
+    font-family: 'Architects Daughter', cursive;
 }
 
 h1 {
@@ -18,8 +18,8 @@ label {
 }
 
 .container {
-  margin-bottom: 30px;
-  font-family: 'Poppins', sans-serif;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .btn-send {
@@ -40,8 +40,6 @@ button a {
     color: white;
 }
 
-
-
 .help-block.with-errors {
     color: #ff5050;
     margin-top: 5px
@@ -50,4 +48,10 @@ button a {
 .card {
     margin-left: 10px;
     margin-right: 10px
+}
+
+.logo{
+    width: 150px; 
+    height: 100px;  
+    text-indent: -9999px;
 }
