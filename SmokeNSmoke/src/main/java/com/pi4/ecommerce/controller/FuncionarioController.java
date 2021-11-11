@@ -24,7 +24,7 @@ public class FuncionarioController {
     @Autowired
     private ServiceBackOffice sb;
     
-    
+    //Carregar página Funcionário
     @RequestMapping(value = "/CadastroFuncionario", method = RequestMethod.GET)
     public String form() {
         return "CadastroBackOffice";
