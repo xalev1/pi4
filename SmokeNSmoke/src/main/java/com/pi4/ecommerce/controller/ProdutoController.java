@@ -17,32 +17,31 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ProdutoController {
 
-  @GetMapping("/Backoffice/Produtos")
+  @GetMapping("/produtos")
   public ModelAndView mostrarTela() {
 
-    ModelAndView mv = new ModelAndView("backoffice-produtos");
+    ModelAndView mv = new ModelAndView("listaProdutos");
     ProdutoDAO produtoDao = new ProdutoDAO();
     List<Produto> produtos = produtoDao.getProdutos();
-    mv.addObject("games", produtos);
+    mv.addObject("listarProdutos", produtos);
     return mv;
   }
 
-  @GetMapping("/Backoffice/Produtos/Novo")
+  @GetMapping("/cadastrarProduto")
   public ModelAndView exibirCadastro() {
 
     Produto p = new Produto();
 
-    ModelAndView mv = new ModelAndView("backoffice-produtos-novo");
-
+    ModelAndView mv = new ModelAndView("cadastroProduto");
     mv.addObject("produto", p);
 
     return mv;
   }
 
-  @GetMapping("/Backoffice/Produtos/{id}")
+  @GetMapping("/alterarProduto/{id}")
   public ModelAndView exibirAlterarProduto(@PathVariable("id") int id) {
 
-    ModelAndView mv = new ModelAndView("backoffice-produtos-alterar");
+    ModelAndView mv = new ModelAndView("alterarProduto");
     ProdutoDAO produtoDao = new ProdutoDAO();
     Produto p = produtoDao.getProdutos(id);
 
@@ -55,10 +54,10 @@ public class ProdutoController {
     return mv;
   }
   
-  @GetMapping("/Backoffice/Produtos/Visualizar/{id}")
+  @GetMapping("/detalheProduto/{id}")
   public ModelAndView verProduto(@PathVariable("id") int id) {
 
-    ModelAndView mv = new ModelAndView("detalhes");
+    ModelAndView mv = new ModelAndView("detalheProduto");
     ProdutoDAO produtoDao = new ProdutoDAO();
     Produto p = produtoDao.getProdutos(id);
 
@@ -71,7 +70,7 @@ public class ProdutoController {
     return mv;
   }
 
-  @PutMapping("/Backoffice/Produtos/{id}")
+  @PutMapping("/alterarProduto/{id}")
   public ModelAndView alterarProduto(
           @PathVariable("id") int id,
           @ModelAttribute(value = "produto") Produto p,
@@ -83,14 +82,12 @@ public class ProdutoController {
     ImagemProdutoDAO imagemProdutoDao = new ImagemProdutoDAO();
     imagemProdutoDao.deletarImagensProduto(p.getId());
 
-    if (imagens != null) imagemProdutoDao.salvarImagensProduto(p.getId(), imagens);
-    
-    ModelAndView mv = new ModelAndView("redirect:/Backoffice/Produtos");
-
+    if (imagens != null) imagemProdutoDao.salvarImagensProduto(p.getId(), imagens);  
+    ModelAndView mv = new ModelAndView("redirect:/produtos");
     return mv;
   }
 
-  @PostMapping("/Backoffice/Produtos/Novo")
+  @PostMapping("/cadastrarProduto")
   public ModelAndView adicionarProduto(
           @ModelAttribute(value = "produto") Produto p,
           @RequestParam(value = "imagem", required = false) String[] imagens) {
@@ -99,13 +96,10 @@ public class ProdutoController {
     produtoDao.salvarProduto(p);
 
     int produto_id = produtoDao.getUltimoProduto();
-
     ImagemProdutoDAO imagemProdutoDao = new ImagemProdutoDAO();
     
     if (imagens != null) imagemProdutoDao.salvarImagensProduto(produto_id, imagens);
-    
-
-    ModelAndView mv = new ModelAndView("redirect:/Backoffice/Produtos");
+    ModelAndView mv = new ModelAndView("redirect:/produtos");
 
     return mv;
   }

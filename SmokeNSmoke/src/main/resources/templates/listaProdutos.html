@@ -53,43 +53,22 @@
                             </thead>
                             <tbody>
                                 <tr th:each="produto : ${listarProdutos}">
-                                    <td><span th:text ="${produto.id_produto}"></span></td>
+                                    <td><span th:text ="${produto.id}"></span></td>
                                     <td><span th:text ="${produto.nome}"></span></td>
                                     <td><span th:text ="${produto.descricao}"></span></td>
                                     <td><span th:text ="${produto.quantidade}"></span></td>
                                     <td><span th:text ="${produto.preco_custo}"></span></td>
                                     <td><span th:text ="${produto.preco_venda}"></span></td>
-                                    <td><span th:text ="${produto.active}"></span></td>
+                                    <td><span th:text ="${produto.ativo}"></span></td>
                                     <td>
-                                        <a th:href="@{/detalheProduto/{id_produto}(id_produto=${produto.id_produto})}" class="view" title="Visualizar" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                                        <a th:href="@{/alterarProduto/{id_produto}(id_produto=${produto.id_produto})}" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                        <a th:href="@{/detalheProduto/{id}(id=${produto.id})}" class="view" title="Visualizar" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                                        <a th:href="@{/alterarProduto/{id}(id=${produto.id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                     </td>
                                 </tr>        
                             </tbody>
                         </table>
-                        <div th:if="${totalPages > 1}">
-                            <div class="row col-sm-10">
-                                <div class="col-sm-6">
-                                    Mostrando 1 a 10 de [[${totalItems}]] registros
-                                </div>
-                                <div class="col-sm-1">
-                                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}"><i class="fa fa-angle-double-left"></i></a>
-                                    <span th:unless="${currentPage < totalPages}"><i class="fa fa-angle-double-left"></i></span>
-                                </div>
-                                <div class="col-sm-1">
-                                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                                        <a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}}">[[${i}]]</a>
-                                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
-                                    </span>
-                                </div>
-                                <div class="col-sm-1">
-                                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}"><i class="fa fa-angle-double-right"></i></a>
-                                    <span th:unless="${currentPage < totalPages}"><i class="fa fa-angle-double-right"></i></span>
-                                </div>
-                            </div>
-                            <div class="clearfix">
-                                <div class="col-sm-4"><button type="button" class="btn btn-primary btn-rounded"><a href="/cadastrarProduto">Adicionar Produto</a></button></div>
-                            </div>
+                        <div class="clearfix">
+                            <div class="col-sm-4"><button type="button" class="btn btn-primary btn-rounded"><a href="/cadastrarProduto">Adicionar Produto</a></button></div>
                         </div>
                     </div>
                 </div> 
