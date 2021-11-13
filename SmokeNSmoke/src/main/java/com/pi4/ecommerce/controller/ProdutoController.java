@@ -1,89 +1,113 @@
 package com.pi4.ecommerce.controller;
 
-import com.pi4.ecommerce.entity.Produto;
-import com.pi4.ecommerce.service.ProdutoServiceImpl;
+import com.pi4.ecommerce.dao.ImagemProdutoDAO;
+import com.pi4.ecommerce.dao.ProdutoDAO;
+import com.pi4.ecommerce.model.ImagemProduto;
+import com.pi4.ecommerce.model.Produto;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProdutoController {
 
-    @Autowired
-    private ProdutoServiceImpl service;
+  @GetMapping("/Backoffice/Produtos")
+  public ModelAndView mostrarTela() {
 
-    // Listar todos os produtos
-    @GetMapping("/produtos")
-    public String listarProdutos(Model model, @Param("keyword") String keyword) {
-        List<Produto> listarProdutos = service.listAll(keyword);
-        model.addAttribute("listarProdutos", listarProdutos);
-        model.addAttribute("keyword", keyword);
+    ModelAndView mv = new ModelAndView("backoffice-produtos");
+    ProdutoDAO produtoDao = new ProdutoDAO();
+    List<Produto> produtos = produtoDao.getProdutos();
+    mv.addObject("games", produtos);
+    return mv;
+  }
 
-        return findPaginated(1, model);
-    }
+  @GetMapping("/Backoffice/Produtos/Novo")
+  public ModelAndView exibirCadastro() {
 
-    // Mostrar formulário de cadastro
-    @GetMapping("/cadastrarProduto")
-    public String cadastrarProdutoForm(Model model) {
-        Produto produto = new Produto();
-        model.addAttribute("produto", produto);
-        return "cadastroProduto";
-    }
+    Produto p = new Produto();
 
-    // Salvar produto
-    @PostMapping("/cadastrarProduto")
-    public String cadastrarProduto(@ModelAttribute("produto") Produto produto) {
-        service.saveProduct(produto);
-        return "redirect:/produtos";
-    }
+    ModelAndView mv = new ModelAndView("backoffice-produtos-novo");
 
-    // Pegar dados do produto e mostrar no formulário de alterar produto
-    @GetMapping("/alterarProduto/{id_produto}")
-    public String alterarProdutoForm(@PathVariable(value = "id_produto") long id_produto, Model model) {
-        Produto produto = service.getProductById(id_produto);
-        model.addAttribute("produto", produto);
-        return "alterarProduto";
-    }
+    mv.addObject("produto", p);
 
-    // Mostrar detalhes do Produto
-    @GetMapping("/detalheProduto/{id_produto}")
-    public String detalheProduto(@PathVariable(value = "id_produto") long id_produto, Model model) {
-        Produto produto = service.getProductById(id_produto);
-        model.addAttribute("produto", produto);
-        return "detalheProduto";
-    }
+    return mv;
+  }
+
+  @GetMapping("/Backoffice/Produtos/{id}")
+  public ModelAndView exibirAlterarProduto(@PathVariable("id") int id) {
+
+    ModelAndView mv = new ModelAndView("backoffice-produtos-alterar");
+    ProdutoDAO produtoDao = new ProdutoDAO();
+    Produto p = produtoDao.getProdutos(id);
+
+    ImagemProdutoDAO imagensProdutoDAO = new ImagemProdutoDAO();
+    List<ImagemProduto> listaImagens = imagensProdutoDAO.getImagensProduto(id);
+
+    mv.addObject("produto", p);
+    mv.addObject("listaImagens", listaImagens);
     
-    // Mostrar detalhes do Produto
-    @GetMapping("/produto/{id_produto}")
-    public String Produto(@PathVariable(value = "id_produto") long id_produto, Model model) {
-        Produto produto = service.getProductById(id_produto);
-        model.addAttribute("produto", produto);
-        return "produto";
-    }
+    return mv;
+  }
+  
+  @GetMapping("/Backoffice/Produtos/Visualizar/{id}")
+  public ModelAndView verProduto(@PathVariable("id") int id) {
 
-    @GetMapping("/page/{pageNo}")
-    public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
-        int pageSize = 10;
-        Page<Produto> page = service.findPaginated(pageNo, pageSize);
-        List<Produto> listarProdutos = page.getContent();
-        model.addAttribute("currentPage", pageNo);
-        model.addAttribute("totalPages", page.getTotalPages());
-        model.addAttribute("totalItems", page.getTotalElements());
-        model.addAttribute("listarProdutos", listarProdutos);
-        return "listaProdutos";
-    }
+    ModelAndView mv = new ModelAndView("detalhes");
+    ProdutoDAO produtoDao = new ProdutoDAO();
+    Produto p = produtoDao.getProdutos(id);
 
-    // Listar todos os produtos
-    @GetMapping("/home")
-    public String home(Model model) {
-        model.addAttribute("listarProdutos", service.getAllProducts());
-        return "index";
-    }
+    ImagemProdutoDAO imagensProdutoDAO = new ImagemProdutoDAO();
+    List<ImagemProduto> listaImagens = imagensProdutoDAO.getImagensProduto(id);
+
+    mv.addObject("produto", p);
+    mv.addObject("listaImagens", listaImagens);
+
+    return mv;
+  }
+
+  @PutMapping("/Backoffice/Produtos/{id}")
+  public ModelAndView alterarProduto(
+          @PathVariable("id") int id,
+          @ModelAttribute(value = "produto") Produto p,
+          @RequestParam(value = "imagem", required = false) String[] imagens) {
+
+    ProdutoDAO produtoDao = new ProdutoDAO();
+    produtoDao.alterarProduto(p);
+
+    ImagemProdutoDAO imagemProdutoDao = new ImagemProdutoDAO();
+    imagemProdutoDao.deletarImagensProduto(p.getId());
+
+    if (imagens != null) imagemProdutoDao.salvarImagensProduto(p.getId(), imagens);
+    
+    ModelAndView mv = new ModelAndView("redirect:/Backoffice/Produtos");
+
+    return mv;
+  }
+
+  @PostMapping("/Backoffice/Produtos/Novo")
+  public ModelAndView adicionarProduto(
+          @ModelAttribute(value = "produto") Produto p,
+          @RequestParam(value = "imagem", required = false) String[] imagens) {
+
+    ProdutoDAO produtoDao = new ProdutoDAO();
+    produtoDao.salvarProduto(p);
+
+    int produto_id = produtoDao.getUltimoProduto();
+
+    ImagemProdutoDAO imagemProdutoDao = new ImagemProdutoDAO();
+    
+    if (imagens != null) imagemProdutoDao.salvarImagensProduto(produto_id, imagens);
+    
+
+    ModelAndView mv = new ModelAndView("redirect:/Backoffice/Produtos");
+
+    return mv;
+  }
+
 }
