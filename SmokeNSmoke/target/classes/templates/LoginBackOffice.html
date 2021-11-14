@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <form class="box" method="post" action="/login" th:object="${usuario}" >
+                <form class="box" method="post">
                         
                     <div class="alert alert-danger" role="alert" th:if="${msg}">
                     <strong th:text="${msg}"></strong>
@@ -26,8 +26,8 @@
                     <h1>Smoke N' Smoke</h1>
                     <p class="text-muted">Painel administrativo</p> 
                     <p class="text-muted"> Por favor, digite seu login e senha</p> 
-                    <input type="text" th:field="*{fun_email}" id="fun_email"  name="fun_email" placeholder="E-Mail"> 
-                    <input type="password" th:field="*{fun_senhausu}" id="fun_senhausu" name="fun_senhausu" placeholder="Senha"> 
+                    <input type="text" id="email"  name="email" placeholder="E-Mail"> 
+                    <input type="password" id="senha" name="senha" placeholder="Senha"> 
                     <a class="forgot text-muted" for="lembrar" href="#">Esqueceu a senha?</a> 
                     <input type="submit" >
                     <div class="col-md-12">

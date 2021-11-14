@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.pi4.ecommerce.SmokeNSmokeApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.358 s - in com.pi4.ecommerce.SmokeNSmokeApplicationTests

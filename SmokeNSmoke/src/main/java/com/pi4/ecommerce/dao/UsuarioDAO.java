@@ -20,7 +20,7 @@ public class UsuarioDAO {
     PreparedStatement stmt = null;
 
     try {
-      stmt = con.prepareStatement("insert into usuario(fun_nome,fun_email,fun_sexo,fun_cargo,fun_senhausu,fun_flgativo) values(?,?,?,?,?,?);");
+      stmt = con.prepareStatement("insert into usuario(nome,email,sexo,cargo,senha,ativo) values(?,?,?,?,md5(?),?);");
 
       stmt.setString(1, u.getNome());
       stmt.setString(2, u.getEmail());
@@ -36,5 +36,44 @@ public class UsuarioDAO {
       ConexaoDB.fecharConexao(con, stmt);
     }
   }
+    
+    
+    public Usuario getLogin(String email,String senha) {
+    Connection con = ConexaoDB.obterConexao();
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    Usuario p = new Usuario();
+
+    try {
+      stmt = con.prepareStatement("select * from usuario where email = " + email + " and senha = " + senha);
+      rs = stmt.executeQuery();
+
+      rs.next();
+
+      p.setEmail(rs.getString("email"));
+      p.setSenha(rs.getString("senha"));
+
+    } catch (SQLException ex) {
+      Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+      ConexaoDB.fecharConexao(con, stmt, rs);
+    }
+    return p;
+  }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
