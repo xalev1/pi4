@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Poppins:wght@200&display=swap');
+
+header {
+    padding: 15px;
+    text-align: center;
+    background: black;
+    color: white;
+    font-size: 30px;
+    font-family: 'Architects Daughter', cursive;
+}
+.logo{
+    width: 150px; 
+    height: 100px;  
+    text-indent: -9999px;
+}
+
+.card-columns{
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+}

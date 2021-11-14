@@ -130,7 +130,7 @@ public class ProdutoDAO {
       stmt.setDouble(4, p.getPreco_venda());
       stmt.setInt(5, p.getQuantidade());
       stmt.setBoolean(6, p.isAtivo());
-      stmt.setInt(8, p.getId());
+      stmt.setInt(7, p.getId());
       stmt.executeUpdate();
     } catch (SQLException ex) {
       Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
