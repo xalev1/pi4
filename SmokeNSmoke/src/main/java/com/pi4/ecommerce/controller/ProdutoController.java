@@ -103,5 +103,21 @@ public class ProdutoController {
 
     return mv;
   }
+  
+   @GetMapping("/home")
+  public ModelAndView exibirHome() {
+    ModelAndView mv = new ModelAndView("home");
+    
+    ProdutoDAO produtoDao = new ProdutoDAO();
+    ImagemProdutoDAO imagemProdutoDao = new ImagemProdutoDAO();
+ 
+    List<Produto> produtos = produtoDao.getProdutos();
+    List<ImagemProduto> imagens = imagemProdutoDao.getFirstImagensProduto();
+ 
+    mv.addObject("produto", produtos);
+    mv.addObject("imagens", imagens);
+
+    return mv;
+  }
 
 }

@@ -86,7 +86,7 @@ public class ImagemProdutoDAO {
     List<ImagemProduto> listaImagens = new ArrayList<>();
       
     try {
-      stmt = con.prepareStatement("select imagens_produto.* from imagens_produto inner join produtos on (imagens_produto.produto_id = produtos.id) where produtos.registro_deletado = false and produtos.disponivel_venda = true group by imagens_produto.produto_id;");
+      stmt = con.prepareStatement("select imagens_produto.* from imagens_produto inner join produtos on (imagens_produto.produto_id = produtos.id) where produtos.registro_deletado = false group by imagens_produto.produto_id;");
       rs = stmt.executeQuery();
 
       while (rs.next()) {

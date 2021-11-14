@@ -9,7 +9,7 @@
         <!--Font Awesome-->
         <script src="https://kit.fontawesome.com/f2150dbc67.js" crossorigin="anonymous"></script>
         <!--Style-->
-        <link rel="stylesheet" type="text/css" href="/index.css">
+        <link rel="stylesheet" type="text/css" href="/home.css">
     </head>
     <body>
         <header>
@@ -94,16 +94,16 @@
                     <!--For Row containing all card-->
                     <div class="row">
                         <!--Card 1-->
-                        <div class="col-sm-4"  th:each="produto : ${listarProdutos}">
+                        <div class="col-sm-4"  th:each="produto, index : ${produtos}">
                             <div class="card card-cascade card-ecommerce wider shadow mb-5 ">
                                 <!--Card image-->
-                                <div id ='conteudo' class="view view-cascade overlay text-center"> <img class="card-img-top" src="/Imagens/img1.jpg" alt=""> <a>
+                                <div id ='conteudo' class="view view-cascade overlay text-center"> <img class="card-img-top" th:src="${imagens[index.index].url_imagem}" style="padding: 1rem"> <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a> </div>
                                 <!--Card Body-->
                                 <div class="card-body card-body-cascade text-center">
                                     <!--Card Title-->
-                                    <h4 class="card-title"><strong><a th:href="@{/produto/{id_produto}(id_produto=${produto.id_produto})}" th:text="${produto.nome}"></a></strong></h4>
+                                    <h4 class="card-title"><strong><a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a></strong></h4>
                                     <!-- Card Description-->
                                     <p class="card-text" th:text="${produto.descricao}"></p>
                                     <p class="price" th:text="'R$ ' + ${produto.preco_venda}"></p>
