@@ -1,12 +1,17 @@
 com\pi4\ecommerce\controller\HomeController.class
 com\pi4\ecommerce\DesignPatterns\Component.class
+com\pi4\ecommerce\model\Cliente.class
 com\pi4\ecommerce\model\Produto.class
 com\pi4\ecommerce\dao\ImagemProdutoDAO.class
 com\pi4\ecommerce\controller\ProdutoController.class
+com\pi4\ecommerce\dao\UsuarioDAO.class
 com\pi4\ecommerce\DesignPatterns\Composite.class
 com\pi4\ecommerce\model\ImagemProduto.class
+com\pi4\ecommerce\model\PerguntaRespostaProduto.class
 com\pi4\ecommerce\controller\AdminController.class
+com\pi4\ecommerce\model\Usuario.class
 com\pi4\ecommerce\SmokeNSmokeApplication.class
 com\pi4\ecommerce\DesignPatterns\Leaf.class
+com\pi4\ecommerce\model\Endereco.class
 com\pi4\ecommerce\dao\ProdutoDAO.class
 com\pi4\ecommerce\util\ConexaoDB.class

@@ -1,7 +1,7 @@
 package com.pi4.ecommerce.DesignPatterns;
 
 public class Leaf implements Component{
-        
+    // Item para adicionar ao carrinho
     private String NomeProduto;
     private double Valor;
     private int Quantidade;

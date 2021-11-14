@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Composite implements Component {
-
+   // Carrinho
     private List<Component> lista = new ArrayList();
 
     public Composite(){
