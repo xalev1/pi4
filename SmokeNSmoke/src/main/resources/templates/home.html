@@ -91,13 +91,15 @@
             </div>
             <section class="mais-vendidos">
                 <div class="page">
+                    <form th:action="@{/home}" class="input-group"></form>
                     <!--For Row containing all card-->
                     <div class="row">
                         <!--Card 1-->
-                        <div class="col-sm-4"  th:each="produto, index : ${produtos}">
+                        <div class="col-sm-4" th:each="produto, index : ${listarProdutos}">
                             <div class="card card-cascade card-ecommerce wider shadow mb-5 ">
                                 <!--Card image-->
-                                <div id ='conteudo' class="view view-cascade overlay text-center"> <img class="card-img-top" th:src="${imagens[index.index].url_imagem}" style="padding: 1rem"> <a>
+                                <div id ='conteudo' class="view view-cascade overlay text-center"> 
+                                    <img class="card-img-top" th:src="${imagens[index.index].url_imagem}" style="padding: 1rem"> <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a> </div>
                                 <!--Card Body-->
@@ -106,7 +108,7 @@
                                     <h4 class="card-title"><strong><a th:href="@{/produto/{id}(id=${produto.id})}" th:text="${produto.nome}"></a></strong></h4>
                                     <!-- Card Description-->
                                     <p class="card-text" th:text="${produto.descricao}"></p>
-                                    <p class="price" th:text="'R$ ' + ${produto.preco_venda}"></p>
+                                    <p class="price" th:text="'R$ ' + ${produto.preco_venda}" ></p>
                                     <!-- Card Rating-->
                                     <ul class="row rating">
                                         <li><i class="fa fa-star checked"></i></li>

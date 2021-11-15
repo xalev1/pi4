@@ -16,7 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProdutoController {
-
+    
+  //BackOffice - Listar produtos
   @GetMapping("/produtos")
   public ModelAndView mostrarTela() {
 
@@ -27,6 +28,7 @@ public class ProdutoController {
     return mv;
   }
 
+  // BackOffice - Exibir formulário para cadastrar produtos 
   @GetMapping("/cadastrarProduto")
   public ModelAndView exibirCadastro() {
 
@@ -37,7 +39,8 @@ public class ProdutoController {
 
     return mv;
   }
-
+  
+  // BackOffice - Exibir formulário para alterar produtos
   @GetMapping("/alterarProduto/{id}")
   public ModelAndView exibirAlterarProduto(@PathVariable("id") int id) {
 
@@ -54,6 +57,8 @@ public class ProdutoController {
     return mv;
   }
   
+  
+  // BackOffice - Mostrar detalhes dos produtos cadastrados
   @GetMapping("/detalheProduto/{id}")
   public ModelAndView verProduto(@PathVariable("id") int id) {
 
@@ -70,6 +75,7 @@ public class ProdutoController {
     return mv;
   }
 
+  // BackOffice - Alterar produtos
   @PutMapping("/alterarProduto/{id}")
   public ModelAndView alterarProduto(
           @PathVariable("id") int id,
@@ -86,7 +92,8 @@ public class ProdutoController {
     ModelAndView mv = new ModelAndView("redirect:/produtos");
     return mv;
   }
-
+  
+  // BackOffice - Cadastrar produtos
   @PostMapping("/cadastrarProduto")
   public ModelAndView adicionarProduto(
           @ModelAttribute(value = "produto") Produto p,
@@ -104,18 +111,35 @@ public class ProdutoController {
     return mv;
   }
   
-   @GetMapping("/home")
+  // FrontEnd - Exibir página Home com os produtos cadastrados
+ @GetMapping("/home")
   public ModelAndView exibirHome() {
+
     ModelAndView mv = new ModelAndView("home");
-    
     ProdutoDAO produtoDao = new ProdutoDAO();
-    ImagemProdutoDAO imagemProdutoDao = new ImagemProdutoDAO();
- 
     List<Produto> produtos = produtoDao.getProdutos();
+    
+    ImagemProdutoDAO imagemProdutoDao = new ImagemProdutoDAO();
     List<ImagemProduto> imagens = imagemProdutoDao.getFirstImagensProduto();
- 
-    mv.addObject("produto", produtos);
+    
     mv.addObject("imagens", imagens);
+    mv.addObject("listarProdutos", produtos);
+    return mv;
+  }
+  
+  // FrontEnd - Mostrar detalhes dos produtos cadastrados
+  @GetMapping("/produto/{id}")
+  public ModelAndView verProdutoHome(@PathVariable("id") int id) {
+
+    ModelAndView mv = new ModelAndView("produto");
+    ProdutoDAO produtoDao = new ProdutoDAO();
+    Produto p = produtoDao.getProdutos(id);
+
+    ImagemProdutoDAO imagensProdutoDAO = new ImagemProdutoDAO();
+    List<ImagemProduto> listaImagens = imagensProdutoDAO.getImagensProduto(id);
+
+    mv.addObject("produto", p);
+    mv.addObject("listaImagens", listaImagens);
 
     return mv;
   }
