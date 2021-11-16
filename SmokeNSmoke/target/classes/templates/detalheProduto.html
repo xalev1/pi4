@@ -9,11 +9,12 @@
         <!--Font Awesome-->
         <script src="https://kit.fontawesome.com/f2150dbc67.js" crossorigin="anonymous"></script>
         <!--Style-->
-        <link rel="stylesheet" type="text/css" href="/produto.css">
         <link rel="stylesheet" type="text/css" href="/detalheProduto.css">
+        <link rel="stylesheet" type="text/css" href="/produto.css">
         <title>Smoke N' Smoke</title>
     </head>
     <header>
+        <img class="logo" src="./logo.png"/>
         <h1>Smoke N' Smoke</h1>
     </header>
     <body>
@@ -47,7 +48,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
-                            <h2 class="name" th:text="${produto.nome}">
+                            <h2 class="name" th:text="${produto.nome}">teste</h2>
                                 <i class="fa fa-star fa-2x text-primary"></i>
                                 <i class="fa fa-star fa-2x text-primary"></i>
                                 <i class="fa fa-star fa-2x text-primary"></i>
@@ -55,9 +56,8 @@
                                 <i class="fa fa-star fa-2x text-muted"></i>
                                 <span class="fa fa-2x"></span>
                                 <a href="javascript:void(0);">10 avaliações de clientes</a>
-                            </h2>
                             <hr />
-                            <h3 class="price-container" th:text="'R$ ' + ${produto.preco_venda}"></h3>
+                            <h3 class="price-container" th:text="'R$ ' + ${produto.preco_venda}">teste</h3>
                             <div class="certified">
                                 <ul>
                                     <li>
@@ -67,11 +67,9 @@
                             </div>
                             <hr />
                             <div class="description description-tabs">
-                                    <div class="tab-pane fade active in" id="more-information">
                                         <br />
-                                        <strong>Descrição</strong>
-                                        <p th:text="${produto.descricao}"></p>
-                                    </div>
+                                        <strong style="font-size: 20px;">Descrição</strong>
+                                        <p style="font-size: 15px;" th:text="${produto.descricao}">teste</p>
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 col-lg-6">

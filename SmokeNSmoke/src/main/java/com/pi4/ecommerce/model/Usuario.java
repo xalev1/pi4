@@ -94,8 +94,4 @@ public class Usuario {
         return "Usuario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf + ", cargo=" + cargo + ", senha=" + senha + ", ativo=" + ativo + ", registro_deletado=" + registro_deletado + '}';
     }
 
-    
-    
-    
-    
 }

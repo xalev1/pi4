@@ -133,7 +133,7 @@ public class UsuarioDAO {
     PreparedStatement stmt = null;
 
     try {
-      stmt = con.prepareStatement("update usuarios set nome = ?, senha = ?, cargo = ?, ativo = ?, where id = ?;");
+      stmt = con.prepareStatement("update usuarios set nome = ?, senha = ?, cargo = ?, ativo = ? where id = ?;");
 
       stmt.setString(1, u.getNome());
       stmt.setString(2, u.getSenha());

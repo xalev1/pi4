@@ -8,6 +8,12 @@ header {
   font-size: 30px;
   font-family: 'Architects Daughter', cursive;
 }
+.logo{
+    width: 150px; 
+    height: 100px;  
+    text-indent: -9999px;
+}
+
 
 label {
     color: #333;
