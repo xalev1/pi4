@@ -16,3 +16,4 @@ com\pi4\ecommerce\DesignPatterns\Leaf.class
 com\pi4\ecommerce\model\Endereco.class
 com\pi4\ecommerce\dao\ProdutoDAO.class
 com\pi4\ecommerce\util\ConexaoDB.class
+com\pi4\ecommerce\controller\UsuarioController.class

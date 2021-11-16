@@ -1,27 +1,29 @@
 package com.pi4.ecommerce.model;
 
 public class Usuario {
-    
+
     private int id;
     private String nome;
     private String email;
-    private String sexo;
+    private String cpf;
     private String cargo;
     private String senha;
     private boolean ativo;
-
+    private boolean registro_deletado;
+    
     public Usuario() {
     }
 
-  public Usuario(int id, String nome, String email,String sexo,String cargo,String senha,boolean ativo) {
-    this.id = id;
-    this.nome = nome;
-    this.email = email;
-    this.sexo = sexo;
-    this.cargo = cargo;
-    this.senha = senha;
-    this.ativo = ativo; 
-  }
+    public Usuario(int id, String nome, String email, String cpf, String cargo, String senha, boolean ativo, boolean registro_deletado) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.cargo = cargo;
+        this.senha = senha;
+        this.ativo = ativo;
+        this.registro_deletado = registro_deletado;
+    }
 
     public int getId() {
         return id;
@@ -47,12 +49,12 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getSexo() {
-        return sexo;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getCargo() {
@@ -79,9 +81,21 @@ public class Usuario {
         this.ativo = ativo;
     }
 
+    public boolean isRegistro_deletado() {
+        return registro_deletado;
+    }
+
+    public void setRegistro_deletado(boolean registro_deletado) {
+        this.registro_deletado = registro_deletado;
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", sexo=" + sexo + ", cargo=" + cargo + ", senha=" + senha + ", ativo=" + ativo + '}';
+        return "Usuario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf + ", cargo=" + cargo + ", senha=" + senha + ", ativo=" + ativo + ", registro_deletado=" + registro_deletado + '}';
     }
-  
+
+    
+    
+    
+    
 }
