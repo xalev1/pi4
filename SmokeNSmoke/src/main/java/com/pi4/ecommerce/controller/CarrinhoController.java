@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CarrinhoController {
-
+    // Carrinho adicionado
   @GetMapping("/Carrinho")
   public ModelAndView mostrarTela(HttpServletRequest request) {
 
