@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html html xmlns:th="http://thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
@@ -8,10 +9,19 @@
         <!--Font Awesome-->
         <script src="https://kit.fontawesome.com/f2150dbc67.js" crossorigin="anonymous"></script>
         <!--Style-->
-        <link rel="stylesheet" type="text/css" href="/index.css">
+        <link rel="stylesheet" type="text/css" href="./home.css">
+        <style type="text/css">
+            h1{
+                margin-top: 5px;
+                margin-bottom: 30px;
+                text-align: center;
+                font-size: 30px;
+
+            }
+        </style>
     </head>
     <body>
-            <header>
+        <header>
             <div class="wrapper">
                 <nav>
                     <div class="menu-toggle">
@@ -21,24 +31,220 @@
                                 <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Pesquisar"
                                        aria-label="Pesquisar">
                             </div>
-                        </form>	
+                        </form> 
                     </div>
                     <div class="brand" style="color:white">
                         <h2>Smoke N' Smoke</h2>
                     </div>
                     <div class="carrinho-login">
-                        <span class="fas fa-user" style="color:white"></span>
-                        <a class="fas fa-shopping-cart" style="color:white" href="/carrinho"></a>
+                        <i class="fas fa-user" style="color:white"></i>
+                        <a style="color: white" href="/login.html">Login</a>
+                        <i class="fas fa-shopping-cart" style="color:white"></i>
+                        <a style="color: white" href="/carrinho.html">Carrinho</a>
                     </div>
                 </nav>
             </div>
-            <nav class="navbar">
-                <a class="nav-item nav-link" href="#" style="color:white">MAIS VENDIDOS</a>
-                <a class="nav-item nav-link" href="#" style="color:white">ATACADOS</a>
-                <a class="nav-item nav-link active" href="#" style="color:white">KITS</a>
-                <a class="nav-item nav-link" href="#" style="color:white">ACESSÓRIOS</a>
-                <a class="nav-item nav-link" href="#" style="color:white">LANÇAMENTOS</a>
-            </nav>
         </header>
-    </body>
-</html>
+        <main>
+            <div class="container">
+                <h1>Criar Conta</h1>
+                <form action="#" id="form" th:action="@{/Cliente/Novo}" th:object="${cliente}" method='POST'>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="text">Nome:</label>
+                                <input type="text" class="form-control" placeholder="Digite seu nome" th:field="*{nome}" id="nome">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="text">CPF:</label>
+                                <input type="text" class="form-control" placeholder="Digite seu CPF sem pontos e traços" onblur="validaCPF()" th:field="*{cpf}" id="cpf">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="text">Celular:</label>
+                                <input type="text" class="form-control" placeholder="Digite seu celular" th:field="*{telefone}" id="telefone">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="text">Email:</label>
+                                <input type="email" class="form-control" placeholder="Digite seu email" th:field="*{email}" id="email"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="text">Data de Nascimento:</label>
+                                <input type="date" class="form-control" placeholder="Digite sua data de nascimento" th:field="*{data_nascimento}" id="data_nascimento">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="text">Gênero:</label>
+                                <select class="form-control">
+                                    <option value="-1"> -- </option>
+                                    <option value="Feminino"> Feminino </option>
+                                    <option value="Masculino"> Masculino </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="text">Senha:</label>
+                                <input type="password" class="form-control" th:field="*{senha}" id="senha">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="text">Repetir Senha:</label>
+                                <input type="password" class="form-control" id="repetirSenha" onblur="validaSenhas()">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="text">Endereço de faturamento*</label>
+                        <div class="form-group">
+                            <label for="text">CEP:</label>
+                            <input type="text" class="form-control" placeholder="Digite o cep" onblur="pesquisacep(this.value)" id="cep_faturamento" name="cep_faturamento">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Logradouro:</label>
+                            <input type="text" class="form-control" placeholder="Digite o logradouro" id="logradouro_faturamento" name="logradouro_faturamento">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Número:</label>
+                            <input type="text" class="form-control" placeholder="Digite o número" id="numero_faturamento" name="numero_faturamento">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Complemento:</label>
+                            <input type="text" class="form-control" placeholder="Digite o complemento" id="complemento_faturamento" name="complemento_faturamento">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Bairro:</label>
+                            <input type="text" class="form-control" placeholder="Digite o bairro" id="bairro_faturamento" name="bairro_faturamento">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Cidade:</label>
+                            <input type="text" class="form-control" placeholder="Digite a cidade" id="cidade_faturamento" name="cidade_faturamento">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Estado:</label>
+                            <input type="text" class="form-control" placeholder="Digite o estado" id="estado_faturamento" name="estado_faturamento">
+                        </div>
+                    </div>
+                    <hr style="margin-top: 1rem">
+                    <div class="form-group">
+                        <label for="text">Endereço de entrega*</label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="usar_endereco_faturamento" onclick="espelharEndereco(this.checked)">
+                            <label class="form-check-label" for="usar_endereco_faturamento">Usar o mesmo endereço de faturamento como entrega.</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="text">CEP:</label>
+                            <input type="text" class="form-control" placeholder="Digite o cep" onblur="pesquisacep1(this.value)" id="cep_entrega" name="cep_entrega">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Logradouro:</label>
+                            <input type="text" class="form-control" placeholder="Digite o logradouro" id="logradouro_entrega" name="logradouro_entrega">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Número:</label>
+                            <input type="text" class="form-control" placeholder="Digite o número" id="numero_entrega" name="numero_entrega">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Complemento:</label>
+                            <input type="text" class="form-control" placeholder="Digite o complemento" id="complemento_entrega" name="complemento_entrega">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Bairro:</label>
+                            <input type="text" class="form-control" placeholder="Digite o bairro" id="bairro_entrega" name="bairro_entrega">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Cidade:</label>
+                            <input type="text" class="form-control" placeholder="Digite a cidade" id="cidade_entrega" name="cidade_entrega">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Estado:</label>
+                            <input type="text" class="form-control" placeholder="Digite o estado" id="estado_entrega" name="estado_entrega">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group" style="margin-top: 1rem">
+                        <label for="text">Endereços adicionais:</label>
+                        <ul class="list-group-flush" id="lista-enderecos" style="padding-left: 0px"></ul>
+                    </div>
+                    <div class="form-group" style="text-align: right" >
+                        <!-- Button to Open the Modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+                            Adicionar Endereço
+                        </button>
+                        <!-- The Modal -->
+                        <div class="modal" id="myModal2">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Adicionar Endereço</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body" style="text-align:left">
+                                        <div class="form-group">
+                                            <label for="text">CEP:</label>
+                                            <input type="text" class="form-control" placeholder="Digite o cep" onblur="pesquisacep2(this.value)" id="cep">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text">Logradouro:</label>
+                                            <input type="text" class="form-control" placeholder="Digite o logradouro" id="logradouro">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text">Número:</label>
+                                            <input type="text" class="form-control" placeholder="Digite o número" id="numero">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text">Complemento:</label>
+                                            <input type="text" class="form-control" placeholder="Digite o complemento" id="complemento">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text">Bairro:</label>
+                                            <input type="text" class="form-control" placeholder="Digite o bairro" id="bairro">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text">Cidade:</label>
+                                            <input type="text" class="form-control" placeholder="Digite a cidade" id="cidade">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text">Estado:</label>
+                                            <input type="text" class="form-control" placeholder="Digite o estado" id="estado">
+                                        </div>
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="addEndereco();">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <button type="button" id="cadastrar" class="btn btn-outline-success" onclick="validar();">Cadastrar</button>
+                        <button class="btn btn-outline-info" type="reset" value="Reset" onclick="const myNode = document.getElementById('lista-enderecos');myNode.innerHTML = '';">Resetar</button>
+                </form>
+            </div>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>   
+</html> 

@@ -43,27 +43,22 @@
                                 <tr>
                                     <th>ID</th></i>
                                     <th>Nome <i class="fa fa-sort"></i></th>
-                                    <th>Descrição</th>
-                                    <th>Quantidade</th>
-                                    <th>Preço de Custo</th>
-                                    <th>Preço de Venda</th>
-                                    <th>Status</th>
-                                    <th>Ações</th>
+                                    <th>CPF</th>
+                                    <th>Telefone</th>
+                                    <th>E-mail</th>
+                                    <th>Genêro</th>
+                                    <th>Data de Nascimento</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="produto : ${listarProdutos}">
-                                    <td><span th:text ="${produto.id}"></span></td>
-                                    <td><span th:text ="${produto.nome}"></span></td>
-                                    <td><span th:text ="${produto.descricao}"></span></td>
-                                    <td><span th:text ="${produto.quantidade}"></span></td>
-                                    <td><span th:text ="${produto.preco_custo}"></span></td>
-                                    <td><span th:text ="${produto.preco_venda}"></span></td>
-                                    <td><span th:text ="${produto.ativo}"></span></td>
-                                    <td>
-                                        <a th:href="@{/detalheProduto/{id}(id=${produto.id})}" class="view" title="Visualizar" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                                        <a th:href="@{/alterarProduto/{id}(id=${produto.id})}" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                    </td>
+                                <tr th:each="cliente : ${listarClientes}">
+                                    <td><span th:text ="${cliente.id}"></span></td>
+                                    <td><span th:text ="${cliente.nome}"></span></td>
+                                    <td><span th:text ="${cliente.cpf}"></span></td>
+                                    <td><span th:text ="${cliente.telefone}"></span></td>
+                                    <td><span th:text ="${cliente.email}"></span></td>
+                                    <td><span th:text ="${cliente.genero}"></span></td>
+                                    <td><span th:text ="${cliente.data_nascimento}"></span></td>
                                 </tr>        
                             </tbody>
                         </table>

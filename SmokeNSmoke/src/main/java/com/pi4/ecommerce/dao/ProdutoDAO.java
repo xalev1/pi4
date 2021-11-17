@@ -138,5 +138,37 @@ public class ProdutoDAO {
       ConexaoDB.fecharConexao(con, stmt);
     }
   }
+  
+  public List<Produto> getProdutosByName() {
+
+    Connection con = ConexaoDB.obterConexao();
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+
+    List<Produto> produtos = new ArrayList<>();
+
+    try {
+      stmt = con.prepareStatement("SELECT * FROM PRODUTOS where nome LIKE ?;");
+      rs = stmt.executeQuery();
+
+      while (rs.next()) {
+        Produto p = new Produto();
+        p.setId(rs.getInt("id"));
+        p.setNome(rs.getString("nome"));
+        p.setDescricao(rs.getString("descricao"));
+        p.setPreco_custo(rs.getDouble("preco_custo"));
+        p.setPreco_venda(rs.getDouble("preco_venda"));
+        p.setQuantidade(rs.getInt("quantidade"));
+        p.setAtivo(rs.getBoolean("ativo"));
+        produtos.add(p);
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+      ConexaoDB.fecharConexao(con, stmt, rs);
+    }
+    return produtos;
+  }
+  
 
 }

@@ -1,3 +1,4 @@
+com\pi4\ecommerce\dao\EnderecoDAO.class
 com\pi4\ecommerce\DesignPatterns\Component.class
 com\pi4\ecommerce\model\Cliente.class
 com\pi4\ecommerce\model\Produto.class
@@ -7,11 +8,12 @@ com\pi4\ecommerce\controller\ProdutoController.class
 com\pi4\ecommerce\dao\UsuarioDAO.class
 com\pi4\ecommerce\model\Carrinho.class
 com\pi4\ecommerce\DesignPatterns\Composite.class
-com\pi4\ecommerce\controller\BackofficeLoginController.class
 com\pi4\ecommerce\model\ImagemProduto.class
+com\pi4\ecommerce\controller\ClienteController.class
 com\pi4\ecommerce\controller\AdminController.class
 com\pi4\ecommerce\model\Usuario.class
 com\pi4\ecommerce\SmokeNSmokeApplication.class
+com\pi4\ecommerce\dao\ClienteDAO.class
 com\pi4\ecommerce\DesignPatterns\Leaf.class
 com\pi4\ecommerce\model\Endereco.class
 com\pi4\ecommerce\dao\ProdutoDAO.class

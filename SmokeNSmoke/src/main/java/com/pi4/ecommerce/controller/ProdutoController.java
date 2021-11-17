@@ -111,6 +111,16 @@ public class ProdutoController {
     return mv;
   }
   
+  @GetMapping("/produtos/pesquisar")
+  public ModelAndView pesquisar() {
+
+    ModelAndView mv = new ModelAndView("listaProdutos");
+    ProdutoDAO produtoDao = new ProdutoDAO();
+    List<Produto> produtos = produtoDao.getProdutosByName();
+    mv.addObject("listarProdutos", produtos);
+    return mv;
+  }
+  
   // FrontEnd - Exibir página Home com os produtos cadastrados
  @GetMapping("/home")
   public ModelAndView exibirHome() {
@@ -143,5 +153,5 @@ public class ProdutoController {
 
     return mv;
   }
-
+  
 }
