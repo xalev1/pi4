@@ -38,10 +38,30 @@
                         <h2>Smoke N' Smoke</h2>
                     </div>
                     <div class="carrinho-login">
-                        <i class="fas fa-user" style="color:white"></i>
-                        <a style="color: white" href="/Login">Login</a>
-                        <i class="fas fa-shopping-cart" style="color:white"></i>
-                        <a style="color: white" href="/Carrinho">Carrinho</a>
+                        <div th:if="${session.cliente == null}">
+                            <div class="dropdown">
+                                <a class="dropbtn" href="/Login"><i class="fas fa-user" style="color:white"></i> Login</a>
+                            </div> 
+
+                            <div class="dropdown">
+                                <a class="dropbtn" href="/Carrinho"><i class="fas fa-shopping-cart" style="color:white"></i> Carrinho</a>
+                            </div> 
+                        </div> 
+                    </div>
+                    <div class="carrinho-conta">
+                        <div th:if="${session.cliente != null}">
+                            <div class="dropdown">
+                                <a class="dropbtn"><i class="fas fa-user" style="color:white"></i> Minha Conta</a>
+                                <div class="dropdown-content">
+                                    <a href="/DadosPessoais">Meus Dados</a>
+                                    <a href="#">Meus Pedidos</a>
+                                    <a href="/Logout">Sair</a>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <a class="dropbtn" href="/Carrinho"><i class="fas fa-shopping-cart" style="color:white"></i> Carrinho</a>
+                            </div> 
+                        </div> 
                     </div>
                 </nav>
             </div>

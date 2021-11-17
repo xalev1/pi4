@@ -69,7 +69,7 @@
         <main>
             <div class="container">
                 <h1>Criar Conta</h1>
-                <form action="#" id="form" th:action="@{/Cliente/Novo}" th:object="${cliente}" method='POST'>
+                <form action="#" id="form" th:action="@{/DadosPessoais}" th:object="${cliente}" method='POST'>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -80,7 +80,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="text">CPF:</label>
-                                <input type="text" class="form-control" placeholder="Digite seu CPF sem pontos e traços" onblur="validaCPF()" th:field="*{cpf}" id="cpf">
+                                <input type="text" class="form-control" placeholder="Digite seu CPF sem pontos e traços" onblur="validaCPF()" th:field="*{cpf}" id="cpf" readonly>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="text">Email:</label>
-                                <input type="email" class="form-control" placeholder="Digite seu email" th:field="*{email}" id="email"></input>
+                                <input type="email" class="form-control" placeholder="Digite seu email" th:field="*{email}" id="email" readonly></input>
                             </div>
                         </div>
                     </div>

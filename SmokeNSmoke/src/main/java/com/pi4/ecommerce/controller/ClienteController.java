@@ -114,7 +114,7 @@ public class ClienteController {
     @GetMapping("/DadosPessoais")
     public ModelAndView exibirAlterarCliente(HttpServletRequest request) {
 
-        ModelAndView mv = new ModelAndView("cliente-alterar");
+        ModelAndView mv = new ModelAndView("alterarCliente");
         HttpSession sessao = request.getSession();
 
         ClienteDAO clienteDao = new ClienteDAO();
@@ -164,7 +164,6 @@ public class ClienteController {
         Cliente cliente = (Cliente) sessao.getAttribute("cliente");
         c.setId(cliente.getId());
 
-        ModelAndView mv = new ModelAndView("home");
         ClienteDAO clienteDao = new ClienteDAO();
         EnderecoDAO enderecoDao = new EnderecoDAO();
 
@@ -212,6 +211,7 @@ public class ClienteController {
                 enderecoDao.salvarEnderecoCliente(c.getId(), enderecoAdicional);
             }
         }
+        ModelAndView mv = new ModelAndView("redirect:/home");
 
         return mv;
     }
@@ -241,6 +241,22 @@ public class ClienteController {
             mv = new ModelAndView("login");
             mv.addObject("cliente", new Cliente());
         }
+        return mv;
+    }
+
+    @GetMapping("/Logout")
+    public ModelAndView exibirHome(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("redirect:/home");
+        HttpSession sessao = request.getSession();
+        sessao.removeAttribute("cliente");
+        return mv;
+    }
+
+    @GetMapping("/Logoff")
+    public ModelAndView deslogarCliente(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("redirect:/home");
+        HttpSession sessao = request.getSession();
+        sessao.removeAttribute("cliente");
         return mv;
     }
 
