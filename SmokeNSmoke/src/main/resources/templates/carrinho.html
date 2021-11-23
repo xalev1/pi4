@@ -121,7 +121,7 @@
                             <h2 class="h6 px-4 py-3 bg-secondary text-center" style="display: inline;">Total</h2>
                             <div class="h3 font-weight-semibold py-3" style="display: inline;" th:text="'R$ ' + ${total}"></div>
                             <hr>
-                            <a class="btn btn-primary btn-block" onclick="let e = document.getElementsByClassName('container pb-5 mt-n2 mt-md-n');if (e.length < 2) {alert('Carrinho vazio!')} else if (document.getElementById('text-cep') == null) {alert('Preencha seu cep!')} else {location.replace('/Endereco-de-entrega')};">
+                            <a class="btn btn-primary btn-block" onclick="let e = document.getElementsByClassName('container pb-5 mt-n2 mt-md-n');location.replace('/Endereco-de-entrega');">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card mr-2">
                                 <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                                 <line x1="1" y1="10" x2="23" y2="10"></line>
