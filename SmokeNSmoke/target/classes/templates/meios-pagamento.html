@@ -13,6 +13,13 @@
         <link rel="stylesheet" type="text/css" href="./home.css">
         <link rel="stylesheet" type="text/css" href="./carrinho.css">
         <style>
+            /* Show navbar not fixed to the top */
+            /*
+              body {
+                  min-height: 75rem;
+              }
+            */
+            /* sticky footer css */
             main>.container {
                 padding: 60px 15px 0;
             }
@@ -28,6 +35,15 @@
 
             code {
                 font-size: 80%;
+            }
+
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
             }
 
             @media only screen and (max-width: 480px) {
@@ -97,7 +113,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 style="margin-top: 1rem; margin-bottom: 2rem; text-align: center">Formas de Pagamento</h3>
+                        <h1 class="display-4" style="margin-top: 1rem; margin-bottom: 2rem; text-align: center">Meios de Pagamento</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -187,7 +203,9 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-sm-6" style="width: 100%; text-align: center;">
+                </div>
+                <hr>
+                <div class="col-sm-6" style="width: 100%; text-align: center;">
                     <div id="legend2">
                         <legend class="">Boleto Bancário</legend>
                     </div>
@@ -198,7 +216,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </main>

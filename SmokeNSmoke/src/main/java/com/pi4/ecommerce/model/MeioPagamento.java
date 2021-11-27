@@ -1,6 +1,7 @@
 package com.pi4.ecommerce.model;
 
 public class MeioPagamento {
+    
   private String meio_pagamento;
   private String nome_impresso;
   private String numero_cartao;

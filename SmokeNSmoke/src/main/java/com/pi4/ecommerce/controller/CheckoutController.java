@@ -3,10 +3,10 @@ package com.pi4.ecommerce.controller;
 import com.pi4.ecommerce.dao.EnderecoDAO;
 import com.pi4.ecommerce.dao.VendaDAO;
 import com.pi4.ecommerce.dao.VendaProdutoDAO;
+import com.pi4.ecommerce.model.Carrinho;
 import com.pi4.ecommerce.model.Cliente;
 import com.pi4.ecommerce.model.Endereco;
 import com.pi4.ecommerce.model.MeioPagamento;
-import com.pi4.ecommerce.model.ProdutoCarrinho;
 import com.pi4.ecommerce.model.Venda;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +34,7 @@ public class CheckoutController {
 
       Cliente c = (Cliente) sessao.getAttribute("cliente");
       Endereco e = (Endereco) sessao.getAttribute("endereco");
-      List<ProdutoCarrinho> carrinho = (List<ProdutoCarrinho>) sessao.getAttribute("carrinho-compras");
+      List<Carrinho> carrinho = (List<Carrinho>) sessao.getAttribute("carrinho-compras");
       double total = (Double) sessao.getAttribute("total");
       MeioPagamento pagamento = (MeioPagamento) sessao.getAttribute("pagamento");
 
@@ -63,7 +63,7 @@ public class CheckoutController {
     Cliente c = (Cliente) sessao.getAttribute("cliente");
     MeioPagamento pagamento = (MeioPagamento) sessao.getAttribute("pagamento");
     Endereco e = (Endereco) sessao.getAttribute("endereco");
-    List<ProdutoCarrinho> carrinho = (List<ProdutoCarrinho>) sessao.getAttribute("carrinho-compras");
+    List<Carrinho> carrinho = (List<Carrinho>) sessao.getAttribute("carrinho-compras");
     Double total = (Double) sessao.getAttribute("total");
 
     Venda v = new Venda();

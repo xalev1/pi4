@@ -1,6 +1,5 @@
 package com.pi4.ecommerce.dao;
 
-package br.com.levegames.dao;
 
 import com.pi4.ecommerce.model.Venda;
 import com.pi4.ecommerce.util.ConexaoDB;
@@ -8,8 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

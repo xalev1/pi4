@@ -1,9 +1,5 @@
 package com.pi4.ecommerce.model;
 
-/**
- *
- * @author mathe
- */
 public class Venda {
   
   private int id;
