@@ -68,7 +68,7 @@
         </header>
         <main>
             <div class="container">
-                <h1>Criar Conta</h1>
+                <h1>Alterar Conta</h1>
                 <form action="#" id="form" th:action="@{/DadosPessoais}" th:object="${cliente}" method='POST'>
                     <div class="row">
                         <div class="col-md-6">
@@ -131,72 +131,73 @@
                         </div>
                     </div>
                     <hr>
+                    <form action="#" id="form" th:action="@{/DadosPessoais}" th:object="${faturamento}" method='POST'>
                     <div class="form-group">
                         <label for="text">Endereço de faturamento*</label>
                         <div class="form-group">
                             <label for="text">CEP:</label>
-                            <input type="text" class="form-control" placeholder="Digite o cep" onblur="pesquisacep(this.value)" id="cep_faturamento" name="cep_faturamento">
+                            <input type="text" class="form-control" placeholder="Digite o cep" onblur="pesquisacep(this.value)" id="cep_faturamento" th:field="*{cep}">
                         </div>
                         <div class="form-group">
                             <label for="text">Logradouro:</label>
-                            <input type="text" class="form-control" placeholder="Digite o logradouro" id="logradouro_faturamento" name="logradouro_faturamento">
+                            <input type="text" class="form-control" placeholder="Digite o logradouro" id="logradouro_faturamento" th:field="*{logradouro}">
                         </div>
                         <div class="form-group">
                             <label for="text">Número:</label>
-                            <input type="text" class="form-control" placeholder="Digite o número" id="numero_faturamento" name="numero_faturamento">
+                            <input type="text" class="form-control" placeholder="Digite o número" id="numero_faturamento" th:field="*{numero}">
                         </div>
                         <div class="form-group">
                             <label for="text">Complemento:</label>
-                            <input type="text" class="form-control" placeholder="Digite o complemento" id="complemento_faturamento" name="complemento_faturamento">
+                            <input type="text" class="form-control" placeholder="Digite o complemento" id="complemento_faturamento" th:field="*{complemento}">
                         </div>
                         <div class="form-group">
                             <label for="text">Bairro:</label>
-                            <input type="text" class="form-control" placeholder="Digite o bairro" id="bairro_faturamento" name="bairro_faturamento">
+                            <input type="text" class="form-control" placeholder="Digite o bairro" id="bairro_faturamento" th:field="*{bairro}">
                         </div>
                         <div class="form-group">
                             <label for="text">Cidade:</label>
-                            <input type="text" class="form-control" placeholder="Digite a cidade" id="cidade_faturamento" name="cidade_faturamento">
+                            <input type="text" class="form-control" placeholder="Digite a cidade" id="cidade_faturamento" th:field="*{cidade}">
                         </div>
                         <div class="form-group">
                             <label for="text">Estado:</label>
-                            <input type="text" class="form-control" placeholder="Digite o estado" id="estado_faturamento" name="estado_faturamento">
+                            <input type="text" class="form-control" placeholder="Digite o estado" id="estado_faturamento" th:field="*{estado}">
                         </div>
                     </div>
                     <hr style="margin-top: 1rem">
                     <div class="form-group">
                         <label for="text">Endereço de entrega*</label>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="usar_endereco_faturamento" onclick="espelharEndereco(this.checked)">
+                            <input type="checkbox" class="form-check-input" id="usar_endereco_faturamento" onclick="espelharEndereco(this.checked)" th:field="*{is_faturamento}">
                             <label class="form-check-label" for="usar_endereco_faturamento">Usar o mesmo endereço de faturamento como entrega.</label>
                         </div>
 
                         <div class="form-group">
                             <label for="text">CEP:</label>
-                            <input type="text" class="form-control" placeholder="Digite o cep" onblur="pesquisacep1(this.value)" id="cep_entrega" name="cep_entrega">
+                            <input type="text" class="form-control" placeholder="Digite o cep" onblur="pesquisacep1(this.value)" id="cep_entrega" th:field="*{cep}">
                         </div>
                         <div class="form-group">
                             <label for="text">Logradouro:</label>
-                            <input type="text" class="form-control" placeholder="Digite o logradouro" id="logradouro_entrega" name="logradouro_entrega">
+                            <input type="text" class="form-control" placeholder="Digite o logradouro" id="logradouro_entrega" th:field="*{logradouro}">
                         </div>
                         <div class="form-group">
                             <label for="text">Número:</label>
-                            <input type="text" class="form-control" placeholder="Digite o número" id="numero_entrega" name="numero_entrega">
+                            <input type="text" class="form-control" placeholder="Digite o número" id="numero_entrega" th:field="*{numero}">
                         </div>
                         <div class="form-group">
                             <label for="text">Complemento:</label>
-                            <input type="text" class="form-control" placeholder="Digite o complemento" id="complemento_entrega" name="complemento_entrega">
+                            <input type="text" class="form-control" placeholder="Digite o complemento" id="complemento_entrega" th:field="*{complemento}">
                         </div>
                         <div class="form-group">
                             <label for="text">Bairro:</label>
-                            <input type="text" class="form-control" placeholder="Digite o bairro" id="bairro_entrega" name="bairro_entrega">
+                            <input type="text" class="form-control" placeholder="Digite o bairro" id="bairro_entrega" th:field="*{bairro}">
                         </div>
                         <div class="form-group">
                             <label for="text">Cidade:</label>
-                            <input type="text" class="form-control" placeholder="Digite a cidade" id="cidade_entrega" name="cidade_entrega">
+                            <input type="text" class="form-control" placeholder="Digite a cidade" id="cidade_entrega" th:field="*{cidade}">
                         </div>
                         <div class="form-group">
                             <label for="text">Estado:</label>
-                            <input type="text" class="form-control" placeholder="Digite o estado" id="estado_entrega" name="estado_entrega">
+                            <input type="text" class="form-control" placeholder="Digite o estado" id="estado_entrega" th:field="*{estado}">
                         </div>
                     </div>
                     <hr>
