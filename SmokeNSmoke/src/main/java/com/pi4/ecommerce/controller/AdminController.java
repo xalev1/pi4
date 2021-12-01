@@ -31,9 +31,9 @@ public class AdminController {
         return mv;
     }
 
-    @PostMapping("/clientes")
-    public ModelAndView listaClientes() {
-        ModelAndView mv = new ModelAndView("redirect:/clientes");
+    @PostMapping("/pedidos")
+    public ModelAndView listaPedidos() {
+        ModelAndView mv = new ModelAndView("redirect:/pedidos");
         return mv;
     }
 

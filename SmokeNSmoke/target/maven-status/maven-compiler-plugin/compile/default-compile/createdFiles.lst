@@ -16,6 +16,7 @@ com\pi4\ecommerce\controller\EnderecoPagamentoController.class
 com\pi4\ecommerce\dao\VendaProdutoDAO.class
 com\pi4\ecommerce\model\PedidoResumido.class
 com\pi4\ecommerce\model\Carrinho.class
+com\pi4\ecommerce\dao\PedidoDAO.class
 com\pi4\ecommerce\model\ImagemProduto.class
 com\pi4\ecommerce\model\MeioPagamento.class
 com\pi4\ecommerce\controller\ClienteController.class

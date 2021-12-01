@@ -14,6 +14,17 @@ public class Pedido {
         this.valor = valor;
     }
 
+    public Pedido() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getPedido() {
         return pedido;
     }
@@ -30,13 +41,15 @@ public class Pedido {
         this.quantidade = quantidade;
     }
 
-    public double getValor() {
+    public float getValor() {
         return valor;
     }
 
     public void setValor(float valor) {
         this.valor = valor;
     }
+
+    
     
     
 }
