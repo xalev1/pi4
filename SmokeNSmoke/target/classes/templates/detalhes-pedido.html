@@ -196,7 +196,7 @@
           </div>
         </div>
         <div class="card shopping-cart" style="margin-bottom: 4rem;">
-          <div class="card-body" th:each="produto: ${produtos}">
+          <div class="card-body" th:each="produto ${pedidos}">
             <!-- PRODUCT -->
             <div class="row" style="align-items: center;">
               <div class="col-12 col-sm-12 col-md-2 text-center">
@@ -221,14 +221,10 @@
               </div>
             </div>
             <hr>
-
-
           </div>
-
           <div class="card-body">
           </div>
           <hr>
-
           <div class="card-footer" style="text-align: right;">
             <div class="pull-right" style="margin: 10px">
               <div class="pull-right" id="text-cep" style="margin: 5px">
@@ -239,7 +235,6 @@
               </div>
             </div>
           </div>
-          
         </div>
     </main>
         <footer class="page-footer">

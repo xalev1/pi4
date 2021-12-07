@@ -107,7 +107,7 @@ public class UsuarioController {
   
   @GetMapping("/admin/logout")
     public ModelAndView exibirHome(HttpServletRequest request) {
-        ModelAndView mv = new ModelAndView("redirect:/loginBackOffice");
+        ModelAndView mv = new ModelAndView("redirect:/admin/login");
         HttpSession sessao = request.getSession();
         sessao.removeAttribute("usuario");
         return mv;
@@ -115,7 +115,7 @@ public class UsuarioController {
 
     @GetMapping("/admin/logoff")
     public ModelAndView deslogarUsuario(HttpServletRequest request) {
-        ModelAndView mv = new ModelAndView("redirect:/loginBackOffice");
+        ModelAndView mv = new ModelAndView("redirect:/admin/login");
         HttpSession sessao = request.getSession();
         sessao.removeAttribute("usuario");
         return mv;

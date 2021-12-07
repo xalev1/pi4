@@ -5,7 +5,7 @@ public class VendaProduto {
     private int id;
     private int produto_id;
     private int venda_id;
-    private Double valor;
+    private double valor;
     private int qtd;
     
 
@@ -36,11 +36,11 @@ public class VendaProduto {
     this.venda_id = venda_id;
   }
 
-  public Double getValor() {
+  public double getValor() {
     return valor;
   }
 
-  public void setValor(Double valor) {
+  public void setValor(double valor) {
     this.valor = valor;
   }
 

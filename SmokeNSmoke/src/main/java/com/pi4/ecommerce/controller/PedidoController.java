@@ -2,6 +2,7 @@ package com.pi4.ecommerce.controller;
 
 import com.pi4.ecommerce.dao.EnderecoDAO;
 import com.pi4.ecommerce.dao.ImagemProdutoDAO;
+import com.pi4.ecommerce.dao.PedidoDAO;
 import com.pi4.ecommerce.dao.PedidoResumidoDAO;
 import com.pi4.ecommerce.dao.ProdutoDAO;
 import com.pi4.ecommerce.model.Carrinho;
@@ -9,6 +10,7 @@ import com.pi4.ecommerce.model.Cliente;
 import com.pi4.ecommerce.model.Endereco;
 import com.pi4.ecommerce.model.ImagemProduto;
 import com.pi4.ecommerce.model.MeioPagamento;
+import com.pi4.ecommerce.model.Pedido;
 import com.pi4.ecommerce.model.PedidoResumido;
 import com.pi4.ecommerce.model.Produto;
 import java.util.ArrayList;
@@ -49,19 +51,20 @@ public class PedidoController {
         return mv;
     }
 
-//    @GetMapping("/Meus-pedidos/{id}")
-//    public ModelAndView exibirDetalhesPedido(@PathVariable("id") int id, HttpServletRequest request) {
-//
-//        
-////        HttpSession sessao = request.getSession();
-////
-////        Cliente c = (Cliente) sessao.getAttribute("cliente");
-////        
-////        PedidoResumidoDAO pedidoResumidoDao = new PedidoResumidoDAO();
-////        List<PedidoResumido> pedidos = pedidoResumidoDao.getPedidos(c.getId());
-////   
-////
-////        return mv;
-//    }
+    @GetMapping("/Meus-pedidos/{id}")
+    public ModelAndView exibirDetalhesPedido(@PathVariable("id") int id, HttpServletRequest request) {
+
+        ModelAndView mv = new ModelAndView("detalhes-pedidos");
+        HttpSession sessao = request.getSession();
+
+        Cliente c = (Cliente) sessao.getAttribute("cliente");
+        
+        PedidoDAO pedidoDao = new PedidoDAO();
+        List<Pedido> pedidos = pedidoDao.getPedidos(c.getId());
+        mv.addObject("pedidos", pedidos);
+   
+
+        return mv;
+    }
 
 }
