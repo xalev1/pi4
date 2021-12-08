@@ -5,6 +5,8 @@ import com.pi4.ecommerce.dao.ImagemProdutoDAO;
 import com.pi4.ecommerce.dao.PedidoDAO;
 import com.pi4.ecommerce.dao.PedidoResumidoDAO;
 import com.pi4.ecommerce.dao.ProdutoDAO;
+import com.pi4.ecommerce.dao.VendaDAO;
+import com.pi4.ecommerce.dao.VendaProdutoDAO;
 import com.pi4.ecommerce.model.Carrinho;
 import com.pi4.ecommerce.model.Cliente;
 import com.pi4.ecommerce.model.Endereco;
@@ -13,6 +15,7 @@ import com.pi4.ecommerce.model.MeioPagamento;
 import com.pi4.ecommerce.model.Pedido;
 import com.pi4.ecommerce.model.PedidoResumido;
 import com.pi4.ecommerce.model.Produto;
+import com.pi4.ecommerce.model.Venda;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +42,7 @@ public class PedidoController {
         mv.addObject("pedidos", pedidos);
         return mv;
     }
-    
+
     @GetMapping("/pedidos")
     public ModelAndView listarPedidos() {
 
@@ -54,17 +57,25 @@ public class PedidoController {
     @GetMapping("/Meus-pedidos/{id}")
     public ModelAndView exibirDetalhesPedido(@PathVariable("id") int id, HttpServletRequest request) {
 
-        ModelAndView mv = new ModelAndView("detalhes-pedidos");
+        ModelAndView mv = null;
+        EnderecoDAO enderecosDao = new EnderecoDAO();
+
         HttpSession sessao = request.getSession();
 
         Cliente c = (Cliente) sessao.getAttribute("cliente");
-        
-        PedidoDAO pedidoDao = new PedidoDAO();
-        List<Pedido> pedidos = pedidoDao.getPedidos(c.getId());
-        mv.addObject("pedidos", pedidos);
-   
+        Endereco e = (Endereco) sessao.getAttribute("endereco");
+        List<Carrinho> carrinho = (List<Carrinho>) sessao.getAttribute("carrinho-compras");
+        double total = (Double) sessao.getAttribute("total");
+        MeioPagamento pagamento = (MeioPagamento) sessao.getAttribute("pagamento");
+
+        mv = new ModelAndView("detalhes-pedidos");
+        mv.addObject("cliente", c);
+        mv.addObject("endereco", e);
+        mv.addObject("carrinho", carrinho);
+        mv.addObject("pagamento", pagamento);
+        mv.addObject("total", sessao.getAttribute("total"));
 
         return mv;
-    }
 
+    }
 }
